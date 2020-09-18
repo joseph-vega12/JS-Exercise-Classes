@@ -155,20 +155,20 @@ console.log(newLambdasian.speak());
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor(attributes){
+  constructor(attributes) {
     super(attributes);
     this.specialty = attributes.specialty;
     this.favLanguage = attributes.favLanguage;
     this.catchPhrase = attributes.catchPhrase;
   }
-  demo(){
+  demo() {
     return `Today we are learning about ${this.specialty}`
   }
-  grade(){
+  grade() {
     return `${this.name} receives a perfect score on ${this.specialty}`;
   }
 }
- const newNew = new Instructor({
+const newNew = new Instructor({
   name: "Hanes",
   age: 30,
   location: "Japan",
@@ -180,37 +180,37 @@ class Instructor extends Lambdasian {
 console.log(newNew.demo());
 console.log(newNew.grade());
 
- /*
-  TASK 5
-    - Write a Student class extending Lambdasian.
-    - Its constructor takes a single argument -  an object with the following keys:
-        + All the keys used to initialize instances of Lambdasian.
-        + `previousBackground` i.e. what the Student used to do before Lambda School
-        + `className` i.e. CS132
-        + `favSubjects`. i.e. an array of the student's favorite subjects ['HTML', 'CSS', 'JS']
-    - The constructor calls the parent constructor passing to it what it needs.
-    - The constructor should also initialize `previousBackground`, `className` and `favSubjects` properties on the instance.
-    - Student instances have the following methods:
-        + `listSubjects` a method that returns all of the student's favSubjects in a single string: `Loving HTML, CSS, JS!`.
-        + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
-        + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
+/*
+ TASK 5
+   - Write a Student class extending Lambdasian.
+   - Its constructor takes a single argument -  an object with the following keys:
+       + All the keys used to initialize instances of Lambdasian.
+       + `previousBackground` i.e. what the Student used to do before Lambda School
+       + `className` i.e. CS132
+       + `favSubjects`. i.e. an array of the student's favorite subjects ['HTML', 'CSS', 'JS']
+   - The constructor calls the parent constructor passing to it what it needs.
+   - The constructor should also initialize `previousBackground`, `className` and `favSubjects` properties on the instance.
+   - Student instances have the following methods:
+       + `listSubjects` a method that returns all of the student's favSubjects in a single string: `Loving HTML, CSS, JS!`.
+       + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
+       + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student extends Lambdasian{
-    constructor(attribute){
-      super(attribute);
-      this.previousBackground = attribute.previousBackground;
-      this.className = attribute.className;
-      this.favSubjects = attribute.favSubjects;
-    }
-    listSubjects(){
-      return `Loving ${this.favSubjects}!`
-    }
-    PRAssignment(){
-      return `${this.name} has submitted a PR for ${this.favSubjects}`
-    }
-    sprintChallenge(){
-      return `${this.name} has begun sprint challenge on ${this.favSubjects}`;
-    }
+class Student extends Lambdasian {
+  constructor(attribute) {
+    super(attribute);
+    this.previousBackground = attribute.previousBackground;
+    this.className = attribute.className;
+    this.favSubjects = attribute.favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}!`
+  }
+  PRAssignment() {
+    return `${this.name} has submitted a PR for ${this.favSubjects}.`
+  }
+  sprintChallenge() {
+    return `${this.name} has begun sprint challenge on ${this.favSubjects}.`;
+  }
 }
 
 const studentOne = new Student({
@@ -242,10 +242,36 @@ console.log(studentOne.sprintChallenge());
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Student {
+  constructor(attribute) {
+    super(attribute);
+    this.gradClassName = attribute.gradClassName;
+    this.favInstructor = attribute.favInstructor;
+  }
+  standUp(){
+    return `${this.favInstructor} announces to ${this.gradClassName}, @channel standy times!`;
+  }
+  debug(){
+    return `${this.favInstructor} debugs ${this.name}'s code on ${this.favSubjects}`;
+  }
 }
+const pManager = new ProjectManager({
+  name: "Charlie",
+  age: 14,
+  location: "Utah",
+  specialty: "Node",
+  favLanguage: "Python",
+  catchPhrase: "Coding is just like wax on wax off 🥋",
+  previousBackground: "Del Taco Cashier",
+  className: "Web36",
+  favSubjects: "Html",
+  gradClassName: "CS1",
+  favInstructor: "Jamie"
+});
 
+
+console.log(pManager.standUp());
+console.log(pManager.debug());
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
