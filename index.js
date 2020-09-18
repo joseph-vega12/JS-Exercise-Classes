@@ -248,10 +248,10 @@ class ProjectManager extends Student {
     this.gradClassName = attribute.gradClassName;
     this.favInstructor = attribute.favInstructor;
   }
-  standUp(){
+  standUp() {
     return `${this.favInstructor} announces to ${this.gradClassName}, @channel standy times!`;
   }
-  debug(){
+  debug() {
     return `${this.favInstructor} debugs ${this.name}'s code on ${this.favSubjects}`;
   }
 }
